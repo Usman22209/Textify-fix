@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, Moon, Sun } from 'lucide-react';
-import { AppContext } from "../App"; // Updated context import
+import { Menu, X, Moon, Sun, NotebookText } from 'lucide-react';
+import { AppContext } from "../App";
 
 export default function Navbar() {
   const { dark, toggleTheme, selectedPage, setSelectedPage } = useContext(AppContext);
@@ -9,6 +9,7 @@ export default function Navbar() {
 
   const navItems = [
     { label: 'Home', path: '/', key: 'home' },
+    { label: 'Notes', path: '/notes', key: 'notes' },
     { label: 'About', path: '/about', key: 'about' },
     { label: 'Contact', path: '/contact', key: 'contact' }
   ];
@@ -74,8 +75,11 @@ export default function Navbar() {
                 ${selectedPage === key ? 'text-blue-500' : ''}
                 hover:text-blue-400 
                 transition-colors
+                flex
+                items-center
               `}
             >
+              {key === 'notes' && <NotebookText className="mr-2" />}
               {label}
             </Link>
           </li>

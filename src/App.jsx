@@ -8,11 +8,11 @@ const Navbar = lazy(() => import("./components/Navbar"));
 const Input = lazy(() => import("./components/Input"));
 const About = lazy(() => import("./components/About"));
 const Contact = lazy(() => import("./components/Contact"));
-
+const Notes = lazy(() => import("./components/Nots"));
 function App() {
   const [dark, setDark] = useState(false);
   const [selectedPage, setSelectedPage] = useState("home");
-
+  const [selectedNote, setSelectedNote] = useState(null)
   const toggleTheme = () => setDark((prev) => !prev);
 
   return (
@@ -22,6 +22,8 @@ function App() {
         toggleTheme,
         selectedPage,
         setSelectedPage,
+        selectedNote,
+        setSelectedNote
       }}
     >
       <Router>
@@ -52,6 +54,7 @@ function App() {
               <Route path="/" element={<Input />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/notes" element={<Notes />} />
             </Routes>
           </Suspense>
         </div>
